@@ -9,6 +9,10 @@ public class Movie {
 	private int productionYear;
 	private double price;
 
+	public Movie(){
+		// I need this for the POST method in dropwizard
+	}
+
 	public Movie(int id, String title, String author, int productionYear, double price) {
 		this.id = id;
 		this.title = title;

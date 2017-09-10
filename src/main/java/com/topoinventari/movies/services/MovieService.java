@@ -53,6 +53,7 @@ public class MovieService {
 
 		nextId++;
 
+		System.out.println(movie);
 		return movie;
 	}
 

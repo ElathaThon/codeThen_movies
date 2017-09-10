@@ -34,7 +34,6 @@ public class MovieApi {
 
 	@POST
 	public Movie addMovie(Movie movie) {
-		System.out.println("Reicived movie: " + movie);
 		return movieService.addMovie(movie);
 	}
 
