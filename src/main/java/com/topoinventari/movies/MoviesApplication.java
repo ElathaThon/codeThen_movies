@@ -1,6 +1,8 @@
 package com.topoinventari.movies;
 
 
+import com.topoinventari.movies.controllers.MovieApi;
+import com.topoinventari.movies.services.MovieService;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -26,43 +28,23 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 	@Override
 	public void run(MoviesConfiguration configuration, Environment environment) {
 
-		/**
+		/*
 		 * The services that we need
-		 * */
+		 */
+
+		MovieService movieService = new MovieService();
+
 		/*
-		Example:
-		TransactionService transactionService = new TransactionService();
-		UserService userService = new UserService();
-		*/
-
-
-		/**
 		 * Controllers
-		 * */
+		 */
 
+		MovieApi movieApi = new MovieApi(movieService);
 
-		/**
-		 * APIs
-		 * */
 		/*
-		Example:
-		//TransactionApi transactionApi = new TransactionApi(transactionService);
-		//UsersApi usersApi = new UsersApi(userService);
-		*/
-
-
-		/**
 		 * Setup controllers and api to dropwizard
-		 * */
-		/*
-		Example:
-		environment.jersey().register(transactionApi);
-		environment.jersey().register(usersApi);
-		*/
+		 */
 
-		//Controllers
-
-		//API
+		environment.jersey().register(movieApi);
 
 
 	}

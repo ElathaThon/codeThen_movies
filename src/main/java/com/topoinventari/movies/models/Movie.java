@@ -17,5 +17,7 @@ public class Movie {
 		this.price = price;
 	}
 
-
+	public String getTitle() {
+		return title;
+	}
 }
