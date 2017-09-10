@@ -65,6 +65,5 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 		//API
 
 
-
 	}
 }
