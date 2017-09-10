@@ -26,6 +26,10 @@ public class MovieService {
 
 	}
 
+	public Movie getById(int id) {
+		return movies.get(id);
+	}
+
 	public Collection<Movie> findByTitle(String search) {
 
 		final Collection<Movie> result;
@@ -40,5 +44,15 @@ public class MovieService {
 
 		return result;
 
+	}
+
+	public Movie addMovie(Movie movie) {
+
+		movie.setId(nextId);
+		movies.put(nextId, movie);
+
+		nextId++;
+
+		return movie;
 	}
 }

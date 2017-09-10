@@ -20,4 +20,8 @@ public class Movie {
 	public String getTitle() {
 		return title;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
