@@ -44,5 +44,11 @@ public class MovieApi {
 		return movieService.updateMovie(id, movie);
 	}
 
+	@DELETE
+	@Path("{id}")
+	public void delete(@PathParam("id") int id) {
+		movieService.deleteMovie(id);
+	}
+
 
 }

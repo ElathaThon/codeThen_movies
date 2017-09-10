@@ -68,4 +68,8 @@ public class MovieService {
 		return editMovie;
 
 	}
+
+	public void deleteMovie(int id) {
+		movies.remove(id);
+	}
 }
