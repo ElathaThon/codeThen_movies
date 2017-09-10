@@ -22,7 +22,7 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 
 	@Override
 	public void initialize(Bootstrap<MoviesConfiguration> bootstrap) {
-		bootstrap.addBundle(new AssetsBundle("/assets/", "/"));
+		bootstrap.addBundle(new AssetsBundle("/assets/", "/","movies.html"));
 	}
 
 	@Override

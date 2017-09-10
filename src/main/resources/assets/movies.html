@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movies</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/formStyle.css">
+        <title>Movies</title>
+    </head>
+    <body>
+
+        <h1>Movies</h1>
+
+        <form>
+            <h2>Add movie</h2>
+            Title: <input  id="title" placeholder="Movie title"><br>
+            Author: <input id="author" placeholder="Author"><br>
+            Production year: <input id="year" placeholder="1987"><br>
+            Price: <input id="price" placeholder="12.87"><br>
+            <button>Add movie</button>
+
+        </form>
+
+        <div id="result"></div>
 
 
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="js/movies.js"></script>
 
-
-</body>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="js/movies.js"></script>
-
+    </body>
 </html>
