@@ -55,4 +55,17 @@ public class MovieService {
 
 		return movie;
 	}
+
+	public Movie updateMovie(int id, Movie movie) {
+
+		Movie editMovie = getById(id);
+
+		editMovie.setTitle(movie.getTitle());
+		editMovie.setAuthor(movie.getAuthor());
+		editMovie.setProductionYear(movie.getProductionYear());
+		editMovie.setPrice(movie.getPrice());
+
+		return editMovie;
+
+	}
 }

@@ -21,7 +21,45 @@ public class Movie {
 		return title;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public int getProductionYear() {
+		return productionYear;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public void setProductionYear(int productionYear) {
+		this.productionYear = productionYear;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public void setId(int id) {
 		this.id = id;
+
+	}
+
+	@Override
+	public String toString() {
+		return "("+id+") " + title + " of " + author + ", " + productionYear + " = " + price+"€";
 	}
 }

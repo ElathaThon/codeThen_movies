@@ -32,4 +32,17 @@ public class MovieApi {
 		return movieService.getById(id);
 	}
 
+	@POST
+	public Movie addMovie(Movie movie) {
+		System.out.println("Reicived movie: " + movie);
+		return movieService.addMovie(movie);
+	}
+
+	@PUT
+	@Path("{id}")
+	public Movie update(@PathParam("id") int id, Movie movie) {
+		return movieService.updateMovie(id, movie);
+	}
+
+
 }
