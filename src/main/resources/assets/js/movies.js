@@ -1,7 +1,5 @@
 
 
-const apiRootUrl = "/api";
-const apiMoviesUrl = apiRootUrl + "/movies";
 
 setupMoviesForm();
 loadAndDisplayMovies();
