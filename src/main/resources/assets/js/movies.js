@@ -56,8 +56,18 @@ function displayMovies(movies) {
     let html = "<ul>";
 
     for (const movie of movies) {
-        console.log(movie);
-        html += "<li onclick='displayDetailMovie("+movie.id+")'>" + movie.title + "</li>";
+        console.log(movie)
+        const id = movie.id;
+        const title = movie.title;
+
+        html +=
+                editMovieButton(id)
+
+                +"<li onclick='displayDetailMovie("+ id +")'>" +
+                    +"<span class='centralText'>" + title + "</span>" +// Central part with text
+                "</li>"
+
+                deleteMovieButton(id);
     }
 
     html += "</ul>";
@@ -71,3 +81,32 @@ function displayMovies(movies) {
 function displayDetailMovie(id) {
     window.open("movieDetail.html?id=" + id, '_blank');
 }
+
+/** Delete the movie with the id parameter */
+function deleteMovie(idMovie) {
+    let promise = axios.delete(apiMoviesUrl + "/" + idMovie)
+        .then(response => response.data) //turns to a promise of movies
+        .catch(error => {
+            console.log("AJAX request finished with and error:");
+            console.error(error);
+        });
+
+    promise.then(movies => {
+        loadAndDisplayMovies();
+    })
+}
+
+
+/* little util functions for this JavaScript file */
+
+/** return the HTML string for the edit button in the list */
+function editMovieButton(id) {
+    return "<button class='left' onclick='editMovie(" + id + ")'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>";
+}
+
+
+function deleteMovieButton(id) {
+    return "<button onclick='deleteMovie(" + id + ")'><i class='fa fa-trash' aria-hidden='true'></i></button>";
+
+}
+
