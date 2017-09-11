@@ -2,6 +2,14 @@
 
 setupLoadBody();
 
+function loadAndDisplayMovie(idMovie) {
+
+    let moviePromise = loadMovie(idMovie);
+    moviePromise.then(movie => {
+        displayMovie(movie);
+    });
+
+}
 
 /**
  * Setup the onload to the body and load the movie information
@@ -13,11 +21,7 @@ function setupLoadBody() {
         const idParam = new URLSearchParams(window.location.search).get("id");
         console.log(idParam);
 
-        let moviePromise = loadMovie(idParam);
-
-        moviePromise.then(movie => {
-            displayMovie(movie);
-        });
+        loadAndDisplayMovie(idParam);
 
     };
 }
