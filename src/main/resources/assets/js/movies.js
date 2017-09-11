@@ -58,7 +58,8 @@ function displayMovies(movies) {
     let html = "<ul>";
 
     for (const movie of movies) {
-        html += "<li>" + movie.title + "</li>";
+        console.log(movie);
+        html += "<li onclick='displayDetailMovie("+movie.id+")'>" + movie.title + "</li>";
     }
 
     html += "</ul>";
@@ -68,3 +69,7 @@ function displayMovies(movies) {
 }
 
 
+/** Displays the detail of the movie */
+function displayDetailMovie(id) {
+    window.open("movieDetail.html?id=" + id, '_blank');
+}
