@@ -1,6 +1,7 @@
 package com.topoinventari.movies.models;
 
 import com.topoinventari.movies.services.MovieService;
+import com.topoinventari.movies.services.UserService;
 
 /**
  * The rentals of the movies with the client that have it
@@ -13,7 +14,7 @@ public class Rental {
 	private int days;
 
 	private MovieService movieService = new MovieService();
-	//TODO: private UserService userService = new UserService();
+	private UserService userService = new UserService();
 
 
 	public Rental(int id, int idMovie, int idUser, int days) {
@@ -44,8 +45,7 @@ public class Rental {
 	}
 
 	public String getUserName() {
-		//TODO: return UserService.getById(idUser).getName();
-		return "abc";
+		return userService.getById(idUser).getName();
 	}
 
 	public void setId(int id) {

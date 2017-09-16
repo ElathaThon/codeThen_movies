@@ -16,7 +16,7 @@ public class MovieService {
 
 	private int nextId;
 
-	public MovieService(){
+	public MovieService() {
 		movies = new HashMap<>();
 		movies.put(1, new Movie(1,"movie1","author1",2011,11.11));
 		movies.put(2, new Movie(2,"movie2","author2",2012,22.22));
