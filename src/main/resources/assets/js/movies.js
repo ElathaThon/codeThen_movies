@@ -20,6 +20,9 @@ function setupMoviesForm() {
             price: parseFloat($('#price').val())
         };
 
+        console.log(document.getElementById("title"));
+
+
         axios
             .post(apiMoviesUrl, movie)
             .then(response => response.data) // turns to a promise of book
@@ -31,6 +34,39 @@ function setupMoviesForm() {
     });
 }
 
+/** setup the form to edit a movie */
+function setupMoviesFormEdit(movie){
+
+    $('#title').val(movie.title);
+    $('#author').val(movie.author);
+    $('#year').val(movie.productionYear);
+    $('#price').val(movie.price);
+
+    /*
+     TODO: Editar les movies
+     $('form').submit(event => {
+
+     console.log("Form submitted");
+     event.preventDefault(); // prevents default form behaviour (reloads the page)
+
+     const newMovie = {
+     title: $('#title').val(),
+     author: $('#author').val(),
+     productionYear: parseInt($('#year').val()),
+     price: parseFloat($('#price').val())
+     };
+
+     axios
+     .put(apiMoviesUrl + "/" + movie.id, newMovie)
+     .then(response => response.data) // turns to a promise of book
+     .then(addedMovie => {
+     console.log("Added movie", addedMovie);
+     loadAndDisplayMovies(); // to refresh list
+     })
+     .catch(error => console.error("Error adding movie!", error));
+     });
+     */
+}
 
 
 /** Loads movies from API and display them */
@@ -53,21 +89,23 @@ function loadMovies() {
 /** Displays the movies on the HTML */
 function displayMovies(movies) {
 
-    let html = "<ul>";
+    let html = "<ul class='list-unstyled'>";
 
     for (const movie of movies) {
-        console.log(movie)
+
         const id = movie.id;
         const title = movie.title;
 
-        html +=
-                editMovieButton(id)
+        html += "<div>" +
+            editMovieButton(movie)
 
-                +"<li onclick='displayDetailMovie("+ id +")'>" +
-                    +"<span class='centralText'>" + title + "</span>" +// Central part with text
-                "</li>"
+            +"<li onclick='displayDetailMovie("+ id +")'>"
+            + title + // Central part with text
+            "</li>" +
 
-                deleteMovieButton(id);
+            deleteMovieButton(id)
+
+            +"</div>";
     }
 
     html += "</ul>";
@@ -96,17 +134,22 @@ function deleteMovie(idMovie) {
     })
 }
 
+function editMovie() {
+    //TODO...
+    setupMoviesFormAdd();
+
+}
 
 /* little util functions for this JavaScript file */
 
 /** return the HTML string for the edit button in the list */
-function editMovieButton(id) {
-    return "<button class='left' onclick='editMovie(" + id + ")'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>";
+function editMovieButton(movie) {
+    return "<button class='pull-left' onclick='editMovie(" + movie + ")'><i class='fa fa-pencil-square-o' aria-hidden='true'></i></button>";
 }
 
 
 function deleteMovieButton(id) {
-    return "<button onclick='deleteMovie(" + id + ")'><i class='fa fa-trash' aria-hidden='true'></i></button>";
+    return "<button class='pull-right' onclick='deleteMovie(" + id + ")'><i class='fa fa-trash' aria-hidden='true'></i></button>";
 
 }
 
