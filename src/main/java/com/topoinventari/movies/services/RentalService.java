@@ -89,4 +89,7 @@ public class RentalService {
 
 	}
 
+	public void deleteRental(int id) {
+		System.out.println("Deleted the rental with id " + id);
+	}
 }
