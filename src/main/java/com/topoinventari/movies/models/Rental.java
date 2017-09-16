@@ -16,6 +16,9 @@ public class Rental {
 	private MovieService movieService = new MovieService();
 	private UserService userService = new UserService();
 
+	public Rental(){
+		// I need this for the POST method in dropwizard
+	}
 
 	public Rental(int id, int idMovie, int idUser, int days) {
 		this.id = id;
