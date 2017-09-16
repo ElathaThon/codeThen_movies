@@ -19,9 +19,6 @@ public class Rental {
 	private User user;
 	private Movie movie;
 
-	private MovieService movieService = new MovieService();
-	private UserService userService = new UserService();
-
 	public Rental(){
 		// I need this for the POST method in dropwizard
 	}
@@ -33,7 +30,10 @@ public class Rental {
 		this.idUser = idUser;
 		this.days = days;
 
+		UserService userService = new UserService();
 		this.user = userService.getById(idUser);
+
+		MovieService movieService = new MovieService();
 		this.movie = movieService.getById(idMovie);
 
 		if (!this.movie.isAvailable()) {
@@ -50,7 +50,16 @@ public class Rental {
 		return idMovie;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
 	public int getIdUser() {
+
 		return idUser;
 	}
 
@@ -75,7 +84,8 @@ public class Rental {
 	}
 
 	public String getUserName() {
-		return userService.getById(idUser).getName();
+		return user.getName();
+		//return userService.getById(idUser).getName();
 	}
 
 }
