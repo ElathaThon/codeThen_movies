@@ -16,8 +16,13 @@ public class RentalService {
 
 	private int nextId;
 
+	private MovieService movieService;
+	private UserService userService;
 
-	public RentalService(){
+	public RentalService(MovieService movieService, UserService userService){
+
+		this.movieService = movieService;
+		this.userService = userService;
 
 		rentals = new HashMap<>();
 		rentals.put(1, new Rental(1,1,1,5));
@@ -32,15 +37,25 @@ public class RentalService {
 		return rentals.get(id);
 	}
 
+
+	/**
+	 Aquesta es la que tenia abans en el {@link Rental}, de forma que el findByMovie funcionava com el findByUser.
+		 public String getMovieTitle() {
+		 	return movieService.getById(idMovie).getTitle();
+		 }
+
+	 Pero crec que no haura de tenir els services en el Rental, sino en el RentalService
+
+	 */
 	public Collection<Rental> findByMovie(String search) {
 
 		final Collection<Rental> result;
 
 		if (search != null) {
 			result = this.rentals.values().stream()
-					.filter(rental -> rental.getMovieTitle().toLowerCase().contains(search.toLowerCase()))
+					//TODO: Not sure to if is a good way to perform the search by the movie title
+					.filter(rental -> movieService.findByTitle(search).contains(search.toLowerCase()))
 					.collect(Collectors.toList());
-
 		} else {
 			result = this.rentals.values();
 		}
@@ -89,7 +104,14 @@ public class RentalService {
 
 	}
 
+	/**
+	 * Delete the rental and set the movie to available again
+	 * */
 	public void deleteRental(int id) {
+
+		movieService.rentMovie(rentals.get(id).getIdMovie());
+
 		System.out.println("Deleted the rental with id " + id);
+		rentals.remove(id);
 	}
 }

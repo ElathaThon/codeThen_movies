@@ -8,6 +8,7 @@ public class Movie {
 	private String author;
 	private int productionYear;
 	private double price;
+	private boolean available;
 
 	public Movie(){
 		// I need this for the POST method in dropwizard
@@ -19,6 +20,7 @@ public class Movie {
 		this.author = author;
 		this.productionYear = productionYear;
 		this.price = price;
+		this.available = true;
 	}
 
 	public String getTitle() {
@@ -57,9 +59,17 @@ public class Movie {
 		this.price = price;
 	}
 
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 
+	}
+
+	public boolean isAvailable() {
+		return available;
 	}
 
 	@Override

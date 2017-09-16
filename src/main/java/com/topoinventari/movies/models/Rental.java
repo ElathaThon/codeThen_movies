@@ -11,7 +11,7 @@ public class Rental {
 	private int id;
 	private int idMovie;
 	private int idUser;
-	private int days;
+	private int days; //Days that the user is going to have the movie, we say it in advance
 
 	private MovieService movieService = new MovieService();
 	private UserService userService = new UserService();
@@ -40,14 +40,6 @@ public class Rental {
 		return days;
 	}
 
-	public String getMovieTitle() {
-		return movieService.getById(idMovie).getTitle();
-	}
-
-	public String getUserName() {
-		return userService.getById(idUser).getName();
-	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -63,4 +55,9 @@ public class Rental {
 	public void setDays(int days) {
 		this.days = days;
 	}
+
+	public String getUserName() {
+		return userService.getById(idUser).getName();
+	}
+
 }

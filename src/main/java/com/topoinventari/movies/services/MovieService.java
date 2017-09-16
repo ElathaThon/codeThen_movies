@@ -65,9 +65,18 @@ public class MovieService {
 		editMovie.setAuthor(movie.getAuthor());
 		editMovie.setProductionYear(movie.getProductionYear());
 		editMovie.setPrice(movie.getPrice());
+		editMovie.setAvailable(movie.isAvailable());
 
 		return editMovie;
 
+	}
+
+	public void rentMovie(int id) {
+		movies.get(id).setAvailable(true);
+	}
+
+	public void returnMovie(int id) {
+		movies.get(id).setAvailable(false);
 	}
 
 	public void deleteMovie(int id) {
