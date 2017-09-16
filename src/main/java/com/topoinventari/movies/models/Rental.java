@@ -3,6 +3,9 @@ package com.topoinventari.movies.models;
 import com.topoinventari.movies.services.MovieService;
 import com.topoinventari.movies.services.UserService;
 
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+
 /**
  * The rentals of the movies with the client that have it
  */
@@ -13,6 +16,9 @@ public class Rental {
 	private int idUser;
 	private int days; //Days that the user is going to have the movie, we say it in advance
 
+	private User user;
+	private Movie movie;
+
 	private MovieService movieService = new MovieService();
 	private UserService userService = new UserService();
 
@@ -21,10 +27,19 @@ public class Rental {
 	}
 
 	public Rental(int id, int idMovie, int idUser, int days) {
+
 		this.id = id;
 		this.idMovie = idMovie;
 		this.idUser = idUser;
 		this.days = days;
+
+		this.user = userService.getById(idUser);
+		this.movie = movieService.getById(idMovie);
+
+		if (!this.movie.isAvailable()) {
+			throw new WebApplicationException("Pelicula no encontrada", Response.Status.NOT_FOUND);
+		}
+
 	}
 
 	public int getId() {

@@ -82,4 +82,8 @@ public class MovieService {
 	public void deleteMovie(int id) {
 		movies.remove(id);
 	}
+
+	public boolean isAvailable(int id) {
+		return movies.get(id).isAvailable();
+	}
 }
