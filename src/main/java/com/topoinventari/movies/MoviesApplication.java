@@ -3,6 +3,8 @@ package com.topoinventari.movies;
 
 import com.topoinventari.movies.controllers.MovieApi;
 import com.topoinventari.movies.services.MovieService;
+import com.topoinventari.movies.services.RentalService;
+import com.topoinventari.movies.services.UserService;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
@@ -33,6 +35,8 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 		 */
 
 		MovieService movieService = new MovieService();
+		RentalService rentalService = new RentalService();
+		UserService userService = new UserService();
 
 		/*
 		 * Controllers
