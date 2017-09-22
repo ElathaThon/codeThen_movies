@@ -15,7 +15,7 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 //Alt + intro per desplegar ho de sugerencias de errores
 
 	public static void main(String[] args) throws Exception {
-		new MoviesApplication().run(args);
+		new MoviesApplication().run("server","src/main/resources/my-app.yaml");
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class MoviesApplication extends Application<MoviesConfiguration> {
 		 */
 
 		MovieService movieService = new MovieService();
-		RentalService rentalService = new RentalService();
 		UserService userService = new UserService();
+		RentalService rentalService = new RentalService(movieService,userService);
 
 		/*
 		 * Controllers
