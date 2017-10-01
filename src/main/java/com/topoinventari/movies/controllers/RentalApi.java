@@ -15,7 +15,8 @@ import java.util.Collection;
 @Produces(MediaType.APPLICATION_JSON)
 public class RentalApi {
 
-	private RentalService rentalService = new RentalService();
+	private RentalService rentalService;
+
 
 	public RentalApi(RentalService rentalService) {
 		this.rentalService = rentalService;
@@ -24,11 +25,6 @@ public class RentalApi {
 	@GET
 	public Collection<Rental> viewRentalsMovie(@QueryParam("searchMovie") String searchMovie){
 		return rentalService.findByMovie(searchMovie);
-	}
-
-	@GET
-	public Collection<Rental> viewRentalsUser(@QueryParam("searchUser") String searchUser) {
-		return rentalService.findByUser(searchUser);
 	}
 
 	@GET
